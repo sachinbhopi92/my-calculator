@@ -1,0 +1,89 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<dom-module id="my-calculator">
+	<template>
+		<style>
+			:host{
+				display:block;
+				font-family:arial;
+			}
+			#calculator{
+				margin-left:250px;
+				margin-right:250px;
+			}
+		</style>
+		<div id="calculator">
+		<h2>{{title}}</h2>
+		<form id="form1" class="form-horizontal">
+		  <div class="form-group">
+			<label for="number1" class="col-sm-1">Number1</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="number1">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="number2" class="col-sm-1">Number2</label>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="number2">
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="answer" class="col-sm-1">Answer</label>
+				<div class="col-sm-2">
+			<input type="number" class="form-control" id="answer">
+			</div>
+		  </div>
+		   <div class="form-group">
+				
+					<button type="button" class="btn btn-primary" id="add">ADD</button>
+					<button type="button" class="btn btn-success" id="sub">SUB</button>
+					<button type="button" class="btn btn-info" id="mul">MUL</button>
+					<button type="button" class="btn btn-warning" id="div">DIV</button>
+			
+			</div>
+		</form>
+		</div>
+	</template>
+	<script>
+		Polymer({
+			is:'my-calculator',
+			properties:{
+				title:{
+					type: String,
+					value:'Calculator component'
+					}
+			},
+			ready:function(){
+				var that=this;
+				this.$.add.addEventListener('click',function(){
+					that.addFunc();
+				});
+				this.$.sub.addEventListener('click',function(){
+					that.subFunc();
+				});
+				this.$.mul.addEventListener('click',function(){
+					that.mulFunc();
+				});
+				this.$.div.addEventListener('click',function(){
+					that.divFunc();
+				});
+			},
+			addFunc:function(){
+				this.$.answer.value= +this.$.number1.value + +this.$.number2.value;
+			},
+			subFunc:function(){
+				this.$.answer.value=this.$.number1.value-this.$.number2.value;
+			},
+			mulFunc:function(){
+				this.$.answer.value=this.$.number1.value*this.$.number2.value;
+			},
+			divFunc:function(){
+				this.$.answer.value=this.$.number1.value/this.$.number2.value;
+			}
+		});
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--
+</dom-module>
